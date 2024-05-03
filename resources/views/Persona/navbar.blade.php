@@ -10,7 +10,7 @@
 
 <nav class="bg-gray-700">
     <div class="container mx-auto px-4">
-        <div class="flex items-center justify-between py-4">
+        <div class="flex items-center justify-between py-8">
             <div>
                 <a href="{{ route('inicio') }}" class="text-white font-bold text-xl">WILLIAM BORGE</a>
             </div>
