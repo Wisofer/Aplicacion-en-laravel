@@ -47,7 +47,7 @@
     </div>
 </nav>
 
-<div class="mx-auto px-4 py-8 mb-10">
+<div class="mx-auto py-8 mb-10">
   @yield('contenido')
 </div>
 
