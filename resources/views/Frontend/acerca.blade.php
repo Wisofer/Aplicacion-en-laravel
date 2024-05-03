@@ -12,28 +12,47 @@
 <body>
     @extends('Persona.navbar')
     @section('contenido')
-        <div class="bg-gradient-to-br from-blue-400 to-purple-800 text-white py-8 px-4 mb-20">
+        <div class="bg-gradient-to-br from-blue-400 to-purple-800 text-white py-20 px-4 mb-20">
             <h1 class="text-center text-3xl md:text-5xl lg:text-7xl font-bold">Framework Frontend</h1>
         </div>
 
+        {{-- @foreach ($datos as $dato)
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="flex justify-center">
+                    <div class="max-w-xs md:max-w-sm rounded overflow-hidden shadow-lg bg-white m-4 mx-10 ">
+
+                        <img class="w-full" src="{{ $dato['imagen'] }}" alt="{{ $dato['nombre'] }}">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">{{ $dato['nombre'] }}</div>
+                            <p class="text-gray-700 text-base">{{ $dato['comentario'] }}</p>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        @endforeach
+ --}}
+            
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div class="flex justify-center">
-                <div class="max-w-xs md:max-w-sm rounded overflow-hidden shadow-lg bg-white m-4 mx-10 ">
-                    @foreach ($datos as $dato)
+            @foreach ($datos as $dato)
+                <div class="flex justify-center">
+                    <div class="max-w-xs md:max-w-sm rounded overflow-hidden shadow-lg bg-white m-4 mx-10 flex-shrink-0">
                         <img class="w-full" src="{{ $dato['imagen'] }}" alt="{{ $dato['nombre'] }}">
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2">{{ $dato['nombre'] }}</div>
                             <p class="text-gray-700 text-base">{{ $dato['comentario'] }}</p>
                         </div>
-                    @endforeach
-
+                    </div>
                 </div>
-
-            </div>
+            @endforeach
         </div>
+        
 
 
-        <div class="bg-gradient-to-br from-red-400 to-purple-800 text-white py-8 px-4 mb-20 mt-20">
+        <div class="bg-gradient-to-br from-red-400 to-purple-800 text-white py-20 px-4 mb-20 mt-20">
             <h1 class="text-center text-3xl md:text-5xl lg:text-7xl font-bold">Framework CSS</h1>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
