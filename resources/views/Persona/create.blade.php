@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
-    @extends('Persona.navbar')
+    @extends('Layouts.app')
     <title>Document</title>
 </head>
 <body class="bg-gray-300">
  
   @section('contenido')
+  <div class="flex items-center justify-center h-screen">
     <div class="bg-white p-8 rounded shadow-lg w-full max-w-md">
         <form action="{{ route('store') }}" method="POST">
             @csrf
@@ -31,6 +32,8 @@
             </div>
         </form>
     </div>
+</div>
+
     @endsection
 </body>
 </html>

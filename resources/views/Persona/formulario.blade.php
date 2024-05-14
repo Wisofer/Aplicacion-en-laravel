@@ -11,7 +11,7 @@
 
     
 @section('contenido')
-@extends('Persona.navbar')
+@extends('Layouts.app')
 <h4>
    
     {{ $nombre }} <br>

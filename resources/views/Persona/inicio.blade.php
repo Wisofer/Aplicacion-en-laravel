@@ -8,7 +8,7 @@
     <title>Sitio web de framework</title>
 </head>
 <body>
-    @extends('Persona.navbar')
+    @extends('Layouts.app')
     @section('contenido')
 
     <div class="bg-gradient-to-r from-blue-300 to-blue-900 text-white text-center py-12 mb-20">

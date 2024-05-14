@@ -9,16 +9,38 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', [PersonaController::class, 'inicio'])->name('inicio');
 Route::get('/', [PersonaController::class, 'inicio'])->name('inicio');
 //Route::get('/persona', [PersonaController::class, 'index'])->name('index');
-Route::get('/acerca', [FrontendController::class, 'index'])->name('acerca');
+// Route::get('/acerca', [FrontendController::class, 'index'])->name('acerca');
+
 Route::get('/create', [PersonaController::class, 'create'])->name('create');
+
 Route::post('/datos', [PersonaController::class, 'store'])->name('store');
+
 Route::get('/datos', [PersonaController::class, 'index'])->name('index')->middleware('auth');
+
 Route::get('/show/{id}', [PersonaController::class, 'show'])->name('show');
+
 Route::get('/{id}/edit', [PersonaController::class, 'edit'])->name('edit');
+
 Route::put('/persona/{id}', [PersonaController::class, 'update'])->name('update');
+
 Route::delete('/persona/{id}', [PersonaController::class, 'destroy'])->name('destroy');
+
 Route::get('/contacto', [PersonaController::class, 'contacto'])->name('contacto');
+
+
+
+
+
+
+// Mostrar el formulario para crear un nuevo registro
 Route::get('/formulario', [FrontendController::class, 'create'])->name('formulario.create');
+
+// Procesar los datos del formulario y almacenar un nuevo registro
+Route::post('/formulario', [FrontendController::class, 'store'])->name('formulario.store');
+
+// Mostrar una página que liste todos los registros existentes
+Route::get('/frontend', [FrontendController::class, 'index'])->name('frontend.index');
+
 
 
 //   Route::get('/', function () {
