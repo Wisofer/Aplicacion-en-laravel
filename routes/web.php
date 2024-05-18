@@ -1,15 +1,14 @@
 <?php
 
+use App\Http\Controllers\Backend\BackendController;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\CorreoController;
-use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-//Route::get('/', [PersonaController::class, 'inicio'])->name('inicio');
+
 Route::get('/', [PersonaController::class, 'inicio'])->name('inicio');
-//Route::get('/persona', [PersonaController::class, 'index'])->name('index');
-// Route::get('/acerca', [FrontendController::class, 'index'])->name('acerca');
 
 Route::get('/create', [PersonaController::class, 'create'])->name('create');
 
@@ -28,24 +27,24 @@ Route::delete('/persona/{id}', [PersonaController::class, 'destroy'])->name('des
 Route::get('/contacto', [PersonaController::class, 'contacto'])->name('contacto');
 
 
-
-
-
-
-// Mostrar el formulario para crear un nuevo registro
-Route::get('/formulario', [FrontendController::class, 'create'])->name('formulario.create');
-
+//Rutas del backend
+Route::get('/backend/formulario', [BackendController::class, 'create'])->name('backend.formulario.create')->middleware('auth');
 // Procesar los datos del formulario y almacenar un nuevo registro
-Route::post('/formulario', [FrontendController::class, 'store'])->name('formulario.store');
+Route::post('/backend/formulario', [BackendController::class, 'store'])->name('backend.formulario.store');
+// Mostrar una página que liste todos los registros existentes
+Route::get('/backend', [BackendController::class, 'index'])->name('backend.index');
 
+
+
+//Rutas del frontend
+Route::get('/frontend/formulario', [FrontendController::class, 'create'])->name('frontend.formulario.create')->middleware('auth');
+// Procesar los datos del formulario y almacenar un nuevo registro
+Route::post('/frontend/formulario', [FrontendController::class, 'store'])->name('frontend.formulario.store');
 // Mostrar una página que liste todos los registros existentes
 Route::get('/frontend', [FrontendController::class, 'index'])->name('frontend.index');
 
 
 
-//   Route::get('/', function () {
-//       return view('dashboard');
-//   })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 //Ruta sobre los correos

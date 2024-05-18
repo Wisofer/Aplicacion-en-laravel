@@ -10,12 +10,12 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gray-100">
+<body class="">
     @extends('Layouts.app')
     @section('contenido')
         <div class="container mx-auto py-8">
             <p class="text-center text-xl font-bold mb-4"></p>
-            <form action="{{ route('formulario.store') }}" method="post"
+            <form action="{{ route('frontend.formulario.store') }}" method="post"
                 class="max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 @csrf
                 <input type="hidden" name="id" id="id">

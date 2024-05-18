@@ -7,19 +7,73 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <title>Document</title>
+    <style>
+        /* Estilos personalizados */
+        .btn-move {
+            transition: transform 0.2s ease;
+            border: 1px solid rgb(0, 21, 141);
+        }
+
+        .btn-move:hover {
+            transform: scale(1.05);
+            /* Escala del botón al pasar el cursor sobre él */
+        }
+
+        body {
+            background-image: url('{{ asset('images/img2.gif') }}');
+            
+        }
+
+        @keyframes flame {
+            0% {
+                transform: scale(1) rotate(-5deg) translateX(-2px);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1) rotate(5deg) translateX(2px);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1) rotate(-5deg) translateX(-2px);
+                opacity: 1;
+            }
+        }
+
+        .animate-flame {
+            animation: flame 1s ease-in-out infinite;
+        }
+    </style>
 </head>
 
-<body>
+<body class="">
     @extends('Layouts.app')
     @section('contenido')
+        <div class="h-full flex items-center justify-center">
+            <div class="text-white text-center">
+                <h1 class="text-9xl font-bold mb-4">¡Bienvenido!</h1>
+                <p class="text-lg text-5xl">Disfruta de la vista estelar en esta página.</p>
+            </div>
+        </div>
+
         <div class="bg-gradient-to-br from-blue-400 to-purple-800 text-white py-20 px-4 mb-20 mt-20">
-            <h1 class="text-center text-3xl md:text-5xl lg:text-7xl font-bold">Framework Frontend</h1>
+            <h1 class="text-center text-3xl md:text-5xl lg:text-9xl font-bold">Framework Frontend</h1>
+        </div>
+        <div class="bg-gradient-to-br from-blue-200 to-red-500 py-20 text-center ">
+            <h2 class="text-xl font-semibold text-5xl">¿Te gustaría agregar un framework Frontend?</h2>
+            <p class="text-gray-600 mt-2 text-3xl">¡Añade tu propio framework favorito! Comparte sus características y
+                ventajas.</p>
+            <a href="{{ route('backend.formulario.create') }}"
+                class="animate-flame text-3xl inline-block bg-gradient-to-r from-blue-500 mt-5 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-2 px-4 rounded-md shadow-md btn-move">
+                Agregar Framework Frontend
+            </a>
         </div>
 
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 ">
             @foreach ($frontends as $frontend)
-                <div class="flex justify-center">
+                <div class="flex justify-center ">
                     <div class="max-w-xs md:max-w-sm rounded overflow-hidden shadow-lg bg-white m-4 mx-10 flex-shrink-0">
                         <img class="w-full" src="{{ $frontend->url }}" alt="{{ $frontend->nombre }}">
                         <div class="px-6 py-4">
@@ -74,9 +128,9 @@
 
 
         <div class="bg-gradient-to-br from-red-400 to-purple-800 text-white py-20 px-4 mb-20 mt-20">
-            <h1 class="text-center text-3xl md:text-5xl lg:text-7xl font-bold">Framework CSS</h1>
+            <h1 class="text-center text-3xl md:text-5xl lg:text-9xl font-bold">Framework CSS</h1>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
             <div class="flex justify-center">
                 <div class="max-w-xs md:max-w-sm rounded overflow-hidden shadow-lg bg-white m-4">
                     <img class="w-full"
@@ -123,6 +177,7 @@
 
         </div>
     @endsection
+
 </body>
 
 </html>
