@@ -1,4 +1,4 @@
-@extends('Persona.navbar')
+@extends('Layouts.app')
 
 @section('contenido')
 
