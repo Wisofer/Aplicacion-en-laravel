@@ -64,7 +64,7 @@
             <h2 class="text-xl font-semibold text-5xl">¿Te gustaría agregar un framework Frontend?</h2>
             <p class="text-gray-600 mt-2 text-3xl">¡Añade tu propio framework favorito! Comparte sus características y
                 ventajas.</p>
-            <a href="{{ route('backend.formulario.create') }}"
+            <a href="{{ route('frontend.formulario.create') }}"
                 class="animate-flame text-3xl inline-block bg-gradient-to-r from-blue-500 mt-5 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-2 px-4 rounded-md shadow-md btn-move">
                 Agregar Framework Frontend
             </a>

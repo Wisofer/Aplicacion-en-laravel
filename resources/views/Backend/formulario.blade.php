@@ -8,88 +8,41 @@
     <title>Formulario de Imagen</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     @vite('resources/css/app.css')
-    <style>
-        .card {
-            max-width: 400px;
-            margin: 40px auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        button[type="submit"] {
-            background-color: #4CAF50;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            
-            
-        }
-
-        button[type="submit"]:hover {
-            background-color: #3e8e41;
-           
-        }
-    </style>
 </head>
 
-<body>
+<body class="">
     @extends('Layouts.app')
     @section('contenido')
-    <br>
-    {{-- <nav class="bg-orange-500 h-12 flex justify-center items-center">
-        <ul class="flex justify-center items-center">
-          <li class="mr-4">
-            <a href="#" class="text-lg font-bold text-white hover:text-orange-700">Inicio</a>
-          </li>
-          <li class="mr-4">
-            <a href="#" class="text-lg font-bold text-white hover:text-yellow-700">Servicios</a>
-          </li>
-          <li class="mr-4">
-            <a href="#" class="text-lg font-bold text-white hover:text-green-700">Sobre nosotros</a>
-          </li>
-          <li class="mr-4">
-            <a href="#" class="text-lg font-bold text-white hover:text-purple-700">Contacto</a>
-          </li>
-        </ul>
-      </nav> --}}
-    <div class="card rounded">
-        <form>
-          <div class="form-group">
-            <label for="url" class="text-white">URL:</label>
-            <input type="url" id="url" name="url" class="form-control rounded" placeholder="Ingrese la URL" />
-          </div>
-          <div class="form-group">
-            <label for="nombre" class="text-white">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" class="form-control rounded" placeholder="Ingrese su nombre" />
-          </div>
-          <div class="form-group">
-            <label for="comentario" class="text-white">Comentario:</label>
-            <textarea id="comentario" name="comentario" class="form-control rounded"  placeholder="Ingrese su comentario"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary rounded">Enviar</button>
-        </form>
-      </div>
-</body>
+        <div class="container mx-auto py-8">
+            <p class="text-center text-xl font-bold mb-4"></p>
+            <form action="{{ route('backend.formulario.store') }}" method="post"
+                class="max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                @csrf
+                <input type="hidden" name="id" id="id">
+                <div class="mb-4">
+                    <label for="url" class="block text-gray-700 text-sm font-bold mb-2">URL de la imagen:</label>
+                    <input type="text" name="url" id="url"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre del framework:</label>
+                    <input type="text" name="nombre" id="nombre"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-6">
+                    <div class="mb-4">
+                        <label for="comentario" class="block text-gray-700 text-sm font-bold mb-2">Comentario de la
+                            imagen:</label>
+                        <textarea name="comentario" id="comentario"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-none"></textarea>
+                    </div>
+                    <div class="flex items-center justify-end">
+                        <button type="submit"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Enviar</button>
+                    </div>
+            </form>
+        </div>
+    </body>
 @endsection
+
 </html>

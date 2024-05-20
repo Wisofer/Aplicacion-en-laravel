@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('backends', function (Blueprint $table) {
             $table->id();
+            $table->string('url');
+            $table->string('nombre');
+            $table->text('comentario')->nullable();
             $table->timestamps();
         });
     }

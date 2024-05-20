@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Frontend;
+
 use App\Http\Controllers\Controller;
 use App\Models\Frontend;
 use Illuminate\Http\Request;
@@ -31,24 +32,27 @@ class FrontendController extends Controller
         $url = $request->input('url');
         $nombre = $request->input('nombre');
         $comentario = $request->input('comentario');
-    
-        // Crear un nuevo registro en la base de datos
-        $frontend = new Frontend();
-        $frontend->url = $url;
-        $frontend->nombre = $nombre;
-        $frontend->comentario = $comentario;
-    
-        // Insertar los datos en la base de datos
-        $frontend->save();
-    
-        // Redireccionar al usuario a la página de inicio o a una lista de elementos
-        return redirect()->route('frontend.index');
+
+        try {
+            // Crear un nuevo registro en la base de datos
+            $frontend = new Frontend();
+            $frontend->url = $url;
+            $frontend->nombre = $nombre;
+            $frontend->comentario = $comentario;
+            // Insertar los datos en la base de datos
+            $frontend->save();
+
+            // Redireccionar al usuario a la página de inicio o a una lista de elementos
+            return redirect()->route('frontend.index');
+        } catch (\Exception $e) {
+            // En caso de error, mostrar un mensaje de error y redireccionar a una página de error
+            return back()->with('error', 'Error al guardar los datos: ' . $e->getMessage())->withInput();
+        }
     }
-    
-    
+
+
     public function show(Frontend $frontend)
     {
-        
     }
 
 
@@ -59,12 +63,10 @@ class FrontendController extends Controller
 
     public function update(Request $request, Frontend $frontend)
     {
-        
     }
 
 
     public function destroy(Frontend $frontend)
     {
-        
     }
 }
