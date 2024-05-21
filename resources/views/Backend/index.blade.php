@@ -20,8 +20,9 @@
 
         body {
             background-image: url('{{ asset('images/img2.gif') }}');
-            
+
         }
+
         @keyframes flame {
             0% {
                 transform: scale(1) rotate(-5deg) translateX(-2px);
@@ -48,15 +49,25 @@
 <body class="">
     @extends('Layouts.app')
     @section('contenido')
-        <div class="h-full flex items-center justify-center  mt-50">
-            <div class="text-white text-center">
-                <h1 class="text-9xl font-bold mb-4">¡Saludos!</h1>
-                <p class="text-lg text-5xl">Bienvenido a esta experiencia celestial.</p>
+        <div class="h-full flex items-center justify-center mt-12 md:mt-24 lg:mt-32">
+            <div class="text-white text-center px-4">
+                <h1 class="text-5xl md:text-7xl lg:text-9xl font-bold mb-4">¡Saludos!</h1>
+                <p class="text-lg md:text-2xl lg:text-4xl">Bienvenido a esta experiencia celestial.</p>
             </div>
         </div>
-
         <div class="bg-gradient-to-br from-pink-300 to-green-600 text-white py-20 px-4 mb-20 mt-20">
             <h1 class="text-center text-3xl md:text-5xl lg:text-9xl font-bold">Framework Backend</h1>
+        </div>
+
+        <div class="bg-gradient-to-r from-purple-300 to-yellow-800 py-20 text-center mt-20">
+            <h2 class="text-xl font-semibold text-5xl">¡Explora nuevos horizontes!</h2>
+            <p class="text-gray-800 mt-2 text-3xl">Descubre y comparte tu framework frontend favorito. ¡Demuestra su
+                potencial!</p>
+            <a href="{{ route('backend.formulario.create') }}"
+                class="text-3xl inline-block relative overflow-hidden font-bold py-5 px-4 rounded-md mt-5">
+                <span class="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-600 rounded-md animate-flame"></span>
+                <span class="relative text-white z-10">Agregar Framework Backend</span>
+            </a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 ">
@@ -111,18 +122,6 @@
                     </div>
                 </div>
             @endforeach
-        </div>
-
-
-        <div class="bg-gradient-to-r from-purple-300 to-yellow-800 py-20 text-center mt-20">
-            <h2 class="text-xl font-semibold text-5xl">¡Explora nuevos horizontes!</h2>
-            <p class="text-gray-800 mt-2 text-3xl">Descubre y comparte tu framework frontend favorito. ¡Demuestra su
-                potencial!</p>
-            <a href="{{route('backend.formulario.create')}}"
-                class="text-3xl inline-block relative overflow-hidden font-bold py-5 px-4 rounded-md mt-5">
-                <span class="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-600 rounded-md animate-flame"></span>
-                <span class="relative text-white z-10">Agregar Framework Backend</span>
-            </a>
         </div>
     @endsection
 

@@ -21,7 +21,7 @@
 
         body {
             background-image: url('{{ asset('images/img2.gif') }}');
-            
+
         }
 
         @keyframes flame {
@@ -50,13 +50,13 @@
 <body class="">
     @extends('Layouts.app')
     @section('contenido')
-        <div class="h-full flex items-center justify-center">
+
+        <div class="h-full flex items-center justify-center mt-12  px-4">
             <div class="text-white text-center">
-                <h1 class="text-9xl font-bold mb-4">¡Bienvenido!</h1>
-                <p class="text-lg text-5xl">Disfruta de la vista estelar en esta página.</p>
+                <h1 class="text-5xl md:text-7xl lg:text-9xl font-bold mb-4">¡Bienvenido!</h1>
+                <p class="text-lg md:text-2xl lg:text-4xl">Disfruta de la vista estelar en esta página.</p>
             </div>
         </div>
-
         <div class="bg-gradient-to-br from-blue-400 to-purple-800 text-white py-20 px-4 mb-20 mt-20">
             <h1 class="text-center text-3xl md:text-5xl lg:text-9xl font-bold">Framework Frontend</h1>
         </div>
@@ -65,7 +65,7 @@
             <p class="text-gray-600 mt-2 text-3xl">¡Añade tu propio framework favorito! Comparte sus características y
                 ventajas.</p>
             <a href="{{ route('frontend.formulario.create') }}"
-                class="animate-flame text-3xl inline-block bg-gradient-to-r from-blue-500 mt-5 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-2 px-4 rounded-md shadow-md btn-move">
+                class="animate-flame text-3xl inline-block bg-gradient-to-r from-blue-500 mt-5 to-blue-600 hover:from-black-600 hover:to-black-700 text-white font-bold py-2 px-4 rounded-md shadow-md btn-move">
                 Agregar Framework Frontend
             </a>
         </div>
