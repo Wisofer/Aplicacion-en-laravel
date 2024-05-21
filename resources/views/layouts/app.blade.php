@@ -8,8 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
     <style>
-
-        body{
+        body {
             background-image: url('{{ asset('images/img2.gif') }}');
         }
 
@@ -42,7 +41,7 @@
             bottom: 0;
             width: 100%;
             padding: 1rem 0;
-            
+
         }
 
         h3 {
@@ -63,50 +62,74 @@
 
 <body>
 
-    <nav class="bg-gradient-to-br from-blue to-blue-900">
+    <nav class="bg-gradient-to-br from-black-500 to-black-900">
         <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between py-8">
+            <div class="flex items-center justify-between py-4">
                 <div>
-                    <a id="menu"x href="{{ route('inicio') }}" class="text-white font-bold text-xl">WILLIAM
-                        BORGE</a>
+                    <a href="{{ route('inicio') }}" class="text-white font-bold text-xl">WILLIAM BORGE</a>
                 </div>
-                <div class="md:hidden">
-                    <button id="menu-toggle" class="text-white focus:outline-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
-                    </button>
-                </div>
-                <div id="menu" class="hidden md:flex md:items-center md:w-auto font-medium">
-                    <ul class="md:flex md:space-x-4" style="size: 200px">
-                        <li><a href="{{ route('backend.index') }}" class="text-gray-300 hover:text-white">Backend </a>
-                        </li>
-                        <li><a href="{{ route('frontend.index') }}" class="text-gray-300 hover:text-white">Fron End</a>
-                        </li>
-                        <li><a href="{{ route('create') }}" class="text-gray-300 hover:text-white">Create</a></li>
-                        <li><a href="{{ route('index') }}" class="text-gray-300 hover:text-white">Datos</a></li>
-                        <li><a href="{{ route('contacto') }}" class="text-gray-300 hover:text-white">Contacto</a></li>
-                        @guest
-                            <li><a href="{{ route('login') }}" class="text-gray-300 hover:text-white">Login</a></li>
-                        @else
-                            <li>
-                                <a href="{{ route('logout') }}" class="text-gray-300 hover:text-white"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    {{ Auth::user()->name }}
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    style="display: none;">
-                                    @csrf
-                                </form>
+                <div class="flex items-center">
+                    <div id="menu" class="hidden md:flex md:items-center md:w-auto font-medium">
+                        <ul class="md:flex md:space-x-4">
+                            <li><a href="{{ route('backend.index') }}"
+                                    class="text-gray-300 hover:text-white">Backend</a></li>
+                            <li><a href="{{ route('frontend.index') }}"
+                                    class="text-gray-300 hover:text-white">Frontend</a></li>
+                            <li><a href="{{ route('create') }}" class="text-gray-300 hover:text-white">Create</a></li>
+                            <li><a href="{{ route('index') }}" class="text-gray-300 hover:text-white">Datos</a></li>
+                            <li><a href="{{ route('contacto') }}" class="text-gray-300 hover:text-white">Contacto</a>
                             </li>
-                        @endguest
-                    </ul>
+                            @guest
+                                <li><a href="{{ route('login') }}" class="text-gray-300 hover:text-white">Login</a></li>
+                            @else
+                                <li>
+                                    <a href="{{ route('logout') }}" class="text-gray-300 hover:text-white"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        {{ Auth::user()->name }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
+                            @endguest
+                        </ul>
+                    </div>
+                    <div class="md:hidden ml-4">
+                        <button id="menu-toggle" class="text-white focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
+    <div id="mobile-menu" class="hidden md:hidden">
+        <ul class="flex flex-col items-center space-y-4 py-4 bg-gradient-to-br from-black-500 to-black-900">
+            <li><a href="{{ route('backend.index') }}" class="text-gray-300 hover:text-white">Backend</a></li>
+            <li><a href="{{ route('frontend.index') }}" class="text-gray-300 hover:text-white">Frontend</a></li>
+            <li><a href="{{ route('create') }}" class="text-gray-300 hover:text-white">Create</a></li>
+            <li><a href="{{ route('index') }}" class="text-gray-300 hover:text-white">Datos</a></li>
+            <li><a href="{{ route('contacto') }}" class="text-gray-300 hover:text-white">Contacto</a></li>
+            @guest
+                <li><a href="{{ route('login') }}" class="text-gray-300 hover:text-white">Login</a></li>
+            @else
+                <li>
+                    <a href="{{ route('logout') }}" class="text-gray-300 hover:text-white"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        {{ Auth::user()->name }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+            @endguest
+        </ul>
+    </div>
 
     <div>
         @yield('contenido')
@@ -133,7 +156,8 @@
 
     <script>
         document.getElementById('menu-toggle').addEventListener('click', function() {
-            document.getElementById('menu').classList.toggle('hidden');
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
         });
     </script>
 </body>
