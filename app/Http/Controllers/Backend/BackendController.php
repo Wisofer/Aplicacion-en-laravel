@@ -24,7 +24,7 @@ class BackendController extends Controller
     public function create()
     {
         
-        return view('Backend.formulario');
+        return view('backend.formulario');
     }
 
 

@@ -30,7 +30,7 @@
 </head>
 
 <body class="">
-    @extends('Layouts.app')
+    @extends('layouts.app')
     @section('contenido')
         <div class="text-white flex justify-center items-center min-h-screen">
             <!-- Div de bienvenida -->

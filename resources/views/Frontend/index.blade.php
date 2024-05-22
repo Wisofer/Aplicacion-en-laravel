@@ -48,7 +48,7 @@
 </head>
 
 <body class="">
-    @extends('Layouts.app')
+    @extends('layouts.app')
     @section('contenido')
 
         <div class="h-full flex items-center justify-center mt-12  px-4">

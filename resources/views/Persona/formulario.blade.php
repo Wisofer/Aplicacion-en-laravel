@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +8,20 @@
     @vite('resources/css/app.css')
     <title>Document</title>
 </head>
+
 <body>
 
-    
-@section('contenido')
-@extends('Layouts.app')
-<h4>
-   
-    {{ $nombre }} <br>
-    {{ $apellido }} <br>
-    {{ $edad }} 
+    @extends('layouts.app')
+    @section('contenido')
+        <h4>
 
-</h4>
-@endsection
-    
+            {{ $nombre }} <br>
+            {{ $apellido }} <br>
+            {{ $edad }}
+
+        </h4>
+    @endsection
+
 </body>
+
 </html>
