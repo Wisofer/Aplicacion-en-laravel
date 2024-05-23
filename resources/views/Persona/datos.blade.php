@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-@extends('Layouts.app')
+@extends('layouts.app')
 @vite('resources/css/app.css')
 
 

@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    @extends('Layouts.app')
+    @extends('layouts.app')
     @section('contenido')
     <p>Hola Mundo</p>
     @endsection

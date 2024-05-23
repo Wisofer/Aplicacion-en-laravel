@@ -29,7 +29,7 @@ class CorreoController extends Controller
 
         //Mostramos la direccion de la interfaz    
     
-        return view('Persona.show', compact("listaPersonas"));
+        return view('persona.show', compact("listaPersonas"));
     }
 
     public function destroy($id_correo, $id_persona)
@@ -40,7 +40,7 @@ class CorreoController extends Controller
 
 
 
-        return view('Persona.show', compact('listaPersonas'));
+        return view('persona.show', compact('listaPersonas'));
 
 
     }   

@@ -19,7 +19,7 @@ class PersonaController extends Controller
        $listaPersonas = Persona::all();
 
         $menssage = "";
-        return view("Persona.index", compact("listaPersonas", "menssage"));
+        return view("persona.index", compact("listaPersonas", "menssage"));
     }
 
 
@@ -56,7 +56,7 @@ class PersonaController extends Controller
         // Obtener la lista actualizada de personas
         $listaPersonas = Persona::all();
     
-        return view('Persona.index', compact("listaPersonas", "menssage"));
+        return view('persona.index', compact("listaPersonas", "menssage"));
     }
     
 
@@ -83,14 +83,14 @@ class PersonaController extends Controller
         // }
 
         // Retornar la vista 'Persona.show' con la persona encontrada
-        return view('Persona.show', compact('listaPersonas'));
+        return view('persona.show', compact('listaPersonas'));
     }
 
     public function edit($id)
     {
         //$listaPersonas = DB::table('personas')->where('id',$id)->get()[0];
         $listaPersonas = Persona::find($id);
-        return view('Persona.edit', compact('listaPersonas'));
+        return view('persona.edit', compact('listaPersonas'));
     }
 
     public function update(Request $request ,$id)
@@ -114,7 +114,7 @@ class PersonaController extends Controller
         }
         $listaPersonas =  Persona::all();
        
-        return view('Persona.index', compact('listaPersonas','menssage'));
+        return view('persona.index', compact('listaPersonas','menssage'));
 
 
     }
@@ -132,7 +132,7 @@ class PersonaController extends Controller
         }
         $listaPersonas =  Persona::all();
 
-        return view('Persona.index', compact('listaPersonas', 'menssage'));
+        return view('persona.index', compact('listaPersonas', 'menssage'));
 
 
     }
@@ -143,23 +143,23 @@ class PersonaController extends Controller
     public function navbar()
     {
 
-        return view('Persona.navbar');
+        return view('persona.navbar');
     }
     public function inicio()
     {
-        return view('Persona.inicio');
+        return view('persona.inicio');
     }
     public function acerca()
     {
-        return view('Persona.acerca');
+        return view('persona.acerca');
     }
 
     public function create()
     {
-        return view('Persona.create');
+        return view('persona.create');
     }
     public function contacto()
     {
-        return view('Persona.contacto');
+        return view('persona.contacto');
     }
 }

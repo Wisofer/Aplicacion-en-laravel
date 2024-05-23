@@ -11,7 +11,7 @@
 </head>
 
 <body class="">
-    @extends('Layouts.app')
+    @extends('layouts.app')
     @section('contenido')
         <div class="container mx-auto py-8">
             <p class="text-center text-xl font-bold mb-4"></p>
