@@ -13,7 +13,7 @@
 <body class="">
     @extends('layouts.app')
     @section('contenido')
-        <div class="container mx-auto py-8">
+        {{-- <div class="container mx-auto py-8">
             <p class="text-center text-xl font-bold mb-4"></p>
             <form action="{{ route('backend.formulario.store') }}" method="post"
                 class="max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -41,7 +41,76 @@
                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Enviar</button>
                     </div>
             </form>
+        </div> --}}
+
+
+        <div class="min-h-screen flex items-center justify-center">
+            <div class="w-full max-w-md bg-neutral-900 text-white rounded-lg shadow-lg">
+                <div class="p-4">
+                    <h2 class="text-xl font-bold">Nuevo Backend</h2>
+                    <p class="text-neutral-400">Complete el formulario para crear un nuevo proyecto.</p>
+                </div>
+                <form class="space-y-4 p-4" action="{{ route('backend.formulario.store') }}" method="post">
+                    @csrf
+                    <div class="space-y-2">
+                        <input type="hidden" name="id" id="id">
+                        <label for="url" class="text-neutral-400">URL de la imagen</label>
+                        <input
+                            name="url" 
+                            id="url"
+                            placeholder="Ingresa la url"
+                            class="bg-neutral-900 border-neutral-700 focus:border-neutral-500 block w-full p-2 rounded"
+                            required
+                        />
+                    </div>
+                    <div class="space-y-2">
+                        <label for="framework" class="text-neutral-400">Framework</label>
+                        <div class="relative">
+                            <select
+                                name="nombre"
+                                id="nombre"
+                                id="framework"
+                                class="bg-neutral-900 border-neutral-700 focus:border-neutral-500 block w-full p-2 rounded appearance-none"
+                                required
+                            >
+                                <option value="" disabled selected>Seleccione un framework</option>
+                                <option value="next">Next.js</option>
+                                <option value="django">Django</option>
+                                <option value="spring">Spring Boot</option>
+                                <option value="laravel">Laravel</option>
+                                <option value="aspnet">ASP.NET Core</option>
+                                <option value="koa">Koa.js</option>
+                                <option value="phoenix">Phoenix</option>
+                                <option value="fastapi">FastAPI</option>
+                                <option value="express">Express.js</option>
+                                <option value="flask">Flask</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-neutral-400">
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M7 10l5 5 5-5H7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="comment" class="text-neutral-400">Comentario</label>
+                        <textarea
+                            name="comentario"
+                            id="comentario"
+                            placeholder="Ingrese un comentario"
+                            class="bg-neutral-900 border-neutral-700 focus:border-neutral-500 block w-full p-2 rounded min-h-[100px]"
+                            required
+                        ></textarea>
+                    </div>
+                    <div class="flex justify-center">
+                        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                            Crear Projecto
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
+        
+        
+        
     </body>
 @endsection
 
