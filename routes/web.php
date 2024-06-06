@@ -17,6 +17,7 @@ Route::post('/datos', [PersonaController::class, 'store'])->name('store');
 Route::get('/datos', [PersonaController::class, 'index'])->name('index')->middleware('auth');
 
 Route::get('/show/{id}', [PersonaController::class, 'show'])->name('show');
+Route::put('persona/{id}/update-image', [PersonaController::class, 'updateImage'])->name('personas.updateImage');
 
 Route::get('/{id}/edit', [PersonaController::class, 'edit'])->name('edit');
 

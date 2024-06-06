@@ -14,9 +14,9 @@ class PersonaController extends Controller
     public function index()
     {
         //Lista personas
-       // $listaPersonas = \App\Models\Persona::listaAll(); 
-       //$listaPersonas = DB::table('personas')->get();
-       $listaPersonas = Persona::all();
+        // $listaPersonas = \App\Models\Persona::listaAll(); 
+        //$listaPersonas = DB::table('personas')->get();
+        $listaPersonas = Persona::all();
 
         $menssage = "";
         return view("persona.index", compact("listaPersonas", "menssage"));
@@ -28,63 +28,75 @@ class PersonaController extends Controller
         $id = $request->input('id');
         $nombre = $request->input('nombre');
         $edad = $request->input('edad');
-    
+
         // // Crear un array asociativo con los datos de la persona
         // $personaData = [
         //     'id' => $id,
         //     'nombre' => $nombre,
         //     'edad' => $edad
         // ];
-    
+
         // // Insertar los datos en la base de datos
         // $affected = DB::table('personas')->insert($personaData);
 
         $persona = new Persona();
-        $persona-> nombre = $nombre;
-        $persona-> edad = $edad;
-    
+        $persona->nombre = $nombre;
+        $persona->edad = $edad;
+
         // Insertar los datos en la base de datos
         $affected = $persona->save();
-    
+
         // Verificar si la inserción fue exitosa
-        if($affected > 0){
+        if ($affected > 0) {
             $menssage = "Dato agregado perfectamente";
         } else {
             $menssage = "Dato no agregado";
         }
-        
+
         // Obtener la lista actualizada de personas
         $listaPersonas = Persona::all();
-    
+
         return view('persona.index', compact("listaPersonas", "menssage"));
     }
-    
 
-    public function show($id)
+
+    public function show($id, Request $request)
     {
         // Obtener la lista de todas las personas
         //$listaPersonas = \App\Models\Persona::listaAll();
-       // $listaPersonas = DB::table('personas')->where('id',$id)->get()[0];
+        // $listaPersonas = DB::table('personas')->where('id',$id)->get()[0]
         $listaPersonas = Persona::find($id);
-
-        // Buscar la persona por su ID en la lista
-        // $persona = null;
-        // foreach ($listaPersonas as $p) {
-        //     if ($p->id == $id) {
-        //         $persona = $p;
-        //         break;
-        //     } 
-        // }
-
-        // // Verificar si la persona existe
-        // if (!$persona) {
-        //     // Si no se encuentra la persona, puedes manejar el error adecuadamente aquí, por ejemplo, redirigiendo a una página de error.
-        //     abort(404, 'Persona no encontrada');
-        // }
 
         // Retornar la vista 'Persona.show' con la persona encontrada
         return view('persona.show', compact('listaPersonas'));
     }
+
+
+    public function updateImage(Request $request, $id)
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+    
+        $persona = Persona::find($id);
+    
+        if (!$persona) {
+            abort(404, 'Persona no encontrada');
+        }
+    
+        $imageName = time() . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
+        $persona->imagen = $imageName;
+        $persona->save();
+    
+        return redirect()->route('show', $persona->id);
+    }
+
+
+
+
+
+
 
     public function edit($id)
     {
@@ -93,48 +105,40 @@ class PersonaController extends Controller
         return view('persona.edit', compact('listaPersonas'));
     }
 
-    public function update(Request $request ,$id)
+    public function update(Request $request, $id)
     {
         $nombre = $request->input('nombre');
         $edad = $request->input('edad');
 
-      //  $affected = DB::table('personas')->where('id',$id)->update(['nombre'=>$nombre, 'edad' =>$edad]);
+        //  $affected = DB::table('personas')->where('id',$id)->update(['nombre'=>$nombre, 'edad' =>$edad]);
 
-      $persona =  Persona::find($id);
-      $persona-> nombre = $nombre; 
-      $persona-> edad = $edad;
+        $persona =  Persona::find($id);
+        $persona->nombre = $nombre;
+        $persona->edad = $edad;
         $affected = $persona->save();
 
-        if($affected  > 0){
+        if ($affected  > 0) {
             $menssage = "Datos actualizado correctamente joder :D";
-
-        }else{
+        } else {
             $menssage = "Datos no actualizado correctamente joder :D";
-
         }
         $listaPersonas =  Persona::all();
-       
-        return view('persona.index', compact('listaPersonas','menssage'));
 
-
+        return view('persona.index', compact('listaPersonas', 'menssage'));
     }
 
     public function destroy($id)
     {
         //$affected = DB::table('personas')->where('id',$id)->delete();
         $affected = Persona::find($id)->delete();
-        if($affected  > 0){
+        if ($affected  > 0) {
             $menssage = "Datos Eliminado ";
-
-        }else{
+        } else {
             $menssage = "Datos no Eliminado lo siento mi pana";
-
         }
         $listaPersonas =  Persona::all();
 
         return view('persona.index', compact('listaPersonas', 'menssage'));
-
-
     }
 
 

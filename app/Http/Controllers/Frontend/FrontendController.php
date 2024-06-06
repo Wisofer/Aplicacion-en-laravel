@@ -23,6 +23,7 @@ class FrontendController extends Controller
 
     public function create()
     {
+
         // Mostrar el formulario para crear un nuevo registro
         return view('frontend.formulario');
     }
